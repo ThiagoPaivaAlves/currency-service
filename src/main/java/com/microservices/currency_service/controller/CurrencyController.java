@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,11 +19,10 @@ import java.math.BigDecimal;
 @RestController
 @RequestMapping("currency")
 @Tag(name = "Currency", description = "Endpoint for managing currencies")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class CurrencyController {
-    
-   @Autowired
-   private CurrencyService service;
+   
+   private final CurrencyService service;
     
     @GetMapping(value = "/{amount}/{from}/{to}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "None for now",

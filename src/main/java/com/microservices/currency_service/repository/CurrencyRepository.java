@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface Currency extends JpaRepository<com.microservices.currency_service.model.entity.Currency, Long> {
+public interface CurrencyRepository extends JpaRepository<com.microservices.currency_service.model.entity.Currency, Long> {
     
     Optional<com.microservices.currency_service.model.entity.Currency> findByFromAndTo(String from, String to);
 }

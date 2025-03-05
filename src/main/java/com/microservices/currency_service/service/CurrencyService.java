@@ -1,9 +1,9 @@
 package com.microservices.currency_service.service;
 
-import com.microservices.currency_service.util.Mapper;
 import com.microservices.currency_service.model.CurrencyDto;
-import com.microservices.currency_service.repository.Currency;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.microservices.currency_service.repository.CurrencyRepository;
+import com.microservices.currency_service.util.Mapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +11,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Service
+@RequiredArgsConstructor
 public class CurrencyService {
     
-    @Autowired
-    private Environment environment;
-    
-    @Autowired
-    private Currency repository;
+    private final Environment environment;
+    private final CurrencyRepository repository;
     
     public CurrencyDto getConvertedCurrency(BigDecimal amount, String from, String to){
     
